@@ -1,0 +1,14 @@
+<table class = "table table-striped table-responsive" >	
+	<thead>				
+		<tr>
+			<th>Business Domain</th>
+			<th>Client</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat = "bdo in exprCtrl.selectCmpny.busClients | orderBy: 'bus_domain'">
+			<td>{{ bdo.bus_domain}}</td>
+			<td>{{ bdo.client}}</td>
+		</tr>
+	</tbody>
+</table>
