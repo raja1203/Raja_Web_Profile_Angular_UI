@@ -1,0 +1,71 @@
+				<div ng-controller = "ExperienceController as exprCtrl">
+
+					<label> Select name of Company :
+						<select ng-model = "exprCtrl.selectCmpny" ng-options = "cmp.shortName for cmp in exprCtrl.cmpns" ng-change = "exprCtrl.visible = true">
+						</select>
+					</label>
+					<br/>
+					<div ng-show = "exprCtrl.visible">
+					
+						<div class = "row">
+							<div class = 'col-md-6'>
+								<p><strong>Name of Organization : </strong><span ng-bind = "exprCtrl.selectCmpny.name"></span>
+ 									    <span ng-class = "{true : 'yellow' , false : 'blue'}[exprCtrl.selectCmpny.isRegular]"
+ 									    ng-bind ="exprCtrl.selectCmpny.jobType"> </span>
+								</p>
+							</div>
+							<div class = 'col-md-6'>
+								<p ng-hide = "exprCtrl.selectCmpny.isRegular">
+									<b>Deployed by </b><span ng-bind = "exprCtrl.selectCmpny.parentCompany"></span> 
+								</p>
+							</div>
+						</div>						
+
+						<div class = 'row' >
+							<div class = 'col-md-6'>
+								<p><strong>Designation : </strong><span ng-bind = "exprCtrl.selectCmpny.designation"></span></p>
+								
+							</div>
+							<div class ='col-md-3'>
+								<p><strong>Base Location : </strong><span ng-bind = "exprCtrl.selectCmpny.baseLocation"></span></p>
+							</div>
+							<div class = 'col-md-3'>
+								<p><strong>Period : </strong><span ng-bind = "exprCtrl.selectCmpny.period"></span></p>
+							</div>
+						</div>
+
+
+						<div ng-controller = "DetailsController as dtlsCtrl" >
+
+							<div ng-show = "dtlsCtrl.visible=exprCtrl.visible">
+								<button type = "button" class = "btn btn-primary" ng-model="dtlsCtrl.radioModel" ng-click = "dtlsCtrl.setTab(1)" 
+								uib-btn-radio="'rolresp'">
+								<span>Roles_Responsibilities <span class="badge" ng-bind = "exprCtrl.selectCmpny.roles_rspnsblts.length"></span>
+								</span>
+								</button>
+
+ 								<button type = "button" class = "btn btn-primary" ng-model="dtlsCtrl.radioModel" ng-click = "dtlsCtrl.setTab(2)"
+ 								uib-btn-radio="'busdom'">						
+ 								<span>Business Domains <span class="badge" ng-bind = "exprCtrl.selectCmpny.busClients.length"></span>
+								</span>
+								</button>
+
+								<button type = "button" class = "btn btn-primary" ng-model="dtlsCtrl.radioModel" ng-click = "dtlsCtrl.setTab(3)"                    ng-show = "exprCtrl.selectCmpny.multiLocations" uib-btn-radio="'othrloc'">									
+								<span>Other_Locations <span class="badge" ng-bind = "exprCtrl.selectCmpny.otherLocations.length"></span>
+								</span>
+								</button>
+							</div>
+
+							<div ng-switch = "dtlsCtrl.radioModel">
+								<div ng-switch-when = "rolresp">
+									<div  ng-show = "dtlsCtrl.isSelected(1)" roles-responsibilities></div>
+								</div>
+								<div ng-switch-when = "busdom">
+									<div  ng-show = "dtlsCtrl.isSelected(2)" business-domains></div>
+								</div>
+								<div ng-switch-when = "othrloc">
+									<div ng-show = "dtlsCtrl.isSelected(3)" other-locations></div>
+								</div>
+							</div>
+				    </div>	
+				</div>

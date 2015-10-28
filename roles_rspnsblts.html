@@ -1,0 +1,14 @@
+<table class = "table table-striped table-responsive">	
+	<thead>				
+		<tr>
+			<th>Roles</th>
+			<th>Responsibilities</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat = "rlresp in exprCtrl.selectCmpny.roles_rspnsblts">
+			<td>{{ rlresp.role_name}}</td>
+			<td>{{ rlresp.responsibilty}}</td>
+		</tr>
+	</tbody>
+</table>

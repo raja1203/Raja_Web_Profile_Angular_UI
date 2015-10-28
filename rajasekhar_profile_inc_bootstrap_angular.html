@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Rajasekhar Reddy Neerubai's Profile</title>
+	<meta charset="utf-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+
+	<style>
+		.yellow {
+		
+			background-color: yellow;
+			font-weight : bold;
+			padding-left : 10px;
+			padding-right : 10px;
+		}
+
+		.blue {
+			
+			color : white;
+			background-color: blue;
+			font-weight : bold;
+			padding-left : 10px;
+			padding-right : 10px;
+		}
+		list-group-item {
+  		  display: list-item;
+		}
+	</style>
+	 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-app = 'myApp'>
+<script src="mymodule.js"></script>
+<script src="myvalues.js"></script>
+<script src="mydirectives.js"></script>
+<script src="mycontrollers.js"></script>
+
+
+	<div class = "container">
+		
+		<section>
+			<h1><strong><u>Rajasekhar Reddy Neerubai's Profile</u></strong></h1>
+			<address>
+		 		23-7-95/25, Santhi Nagar,<br>
+		 		M.R.Palli, Tirupati, 517502.<br>
+				<strong><span class = "glyph glyphicon-phone"> +91-90032 00301</span>      <span class="glyph glyphicon-envelope">  rajasekhar.neerubai@gmail.com  </span></strong><br>
+			</address>
+		</section>
+
+		<uib-tabset justified="true" type="pills">
+			 <uib-tab heading="About">
+			 	<home-page></home-page>
+			 </uib-tab>
+			 <uib-tab heading="Professional Summary">
+				 <profile-summary></profile-summary>
+			 </uib-tab>
+			 <uib-tab heading="Achievements" >
+			 	<achievements></achievements>				
+		     </uib-tab>
+			 <uib-tab heading="Experience" >
+			    <experience></experience>	
+			 </uib-tab>
+			 <uib-tab heading="Trainings" >
+			    <training></training>
+			 </uib-tab>
+			 <uib-tab heading="Skillset" >
+			    <skill-set></skill-set>
+			 </uib-tab>
+		</uib-tabset>	
+	</div>
+</body>
+</html>
