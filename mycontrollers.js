@@ -1,18 +1,16 @@
-app.controller('trainController',function(visibility){
- this.isCollapsed = visibility;	
- this.radioModel = '';
-});
 
-app.controller('ExperienceController',function(org_summary, visibility){
-	this.cmpns = org_summary;
+app.controller('ExperienceController',['myRepository',function(myRepository){
+
+	this.selectOrg = '';
+	this.org_list = myRepository.org_list;
     this.selectCmpny={};
-    this.visible = visibility;
+    this.visible = myRepository.visibility;    
+    this.basic_details = myRepository.basic_details;
+}]);
 
-    
-});
 
-app.controller("DetailsController", function(visibility) {
-	this.visible = visibility;
+app.controller("DetailsController",['myRepository', function(myRepository) {
+	this.visible = myRepository.visibility;
 	
 	this.setTab = function(currentTab) {
 		this.tab = currentTab ;
@@ -20,7 +18,14 @@ app.controller("DetailsController", function(visibility) {
 	this.isSelected = function(checkTab){
 		return this.tab === checkTab || 0;
 	}
-	this.bdo = {};
-	this.loc = {};
-    this.radioModel = '';
-});
+	
+    this.radioModel = '';    
+    this.roles_respns = myRepository.roles_rspns;
+    this.bus_doms = myRepository.bus_domains;
+    this.locations = myRepository.org_otherLocations;
+}]);
+
+app.controller('trainController',['myRepository',function(myRepository){
+ this.isCollapsed = myRepository.visibility;	
+ this.radioModel = '';
+}]);

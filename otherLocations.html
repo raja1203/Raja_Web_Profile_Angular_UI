@@ -1,16 +1,21 @@
-<div ng-show = "exprCtrl.selectCmpny.otherLocations.length" >
-	<table class = "table table-striped table-responsive">
-		<thead>
-			<tr>
-				<th> City </th>
-				<th> Country </th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat = "loc in exprCtrl.selectCmpny.otherLocations | orderBy: 'country' " >
-				<td> {{loc.city}} </td>
-				<td> {{loc.country}} </td>
-			</tr>
-		</tbody>
-	</table>
+
+<div ng-repeat = "sloc in dtlsCtrl.locations | filter : sorg.shortName " >
+
+	<div>
+		<table class = "table table-striped table-responsive">
+			<thead>
+				<tr>
+					<th> City </th>
+					<th> Country </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat = "loc in sloc.otherLocations | orderBy: 'country' " >
+					<td> {{loc.city}} </td>
+					<td> {{loc.country}} </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
 </div>
