@@ -1,5 +1,5 @@
-<div ng-repeat = "srlresp in dtlsCtrl.roles_respns | filter : sorg.shortName">
-	<table class = "table table-striped table-responsive">	
+<div ng-repeat = "srlresp in dtlsCtrl.selDtls()  | filter : sorg.shortName">
+	<table class = "table table-striped table-bordered table-responsive">	
 		<thead>				
 			<tr>
 				<th>Roles</th>
