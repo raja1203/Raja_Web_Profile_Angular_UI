@@ -1,17 +1,17 @@
 
 
-				<div ng-controller = "trainController">
+				<div ng-controller = "trainController as train">
 				
 					<div class = "btn-group">
-						<button type="button" class="btn btn-primary" ng-click ="isCollapsed = !isCollapsed" ng-model="radioModel" uib-btn-radio="'attend'">
+						<button type="button" class="btn btn-primary" ng-click ="isCollapsed = !isCollapsed" ng-model="train.radioModel" uib-btn-radio="'attend'">
 								Trainings Attended
 						</button>
-						<button type="button" class="btn btn-primary" ng-click="isCollapsed = !isCollapsed" ng-model="radioModel" 
+						<button type="button" class="btn btn-primary" ng-click="isCollapsed = !isCollapsed" ng-model="train.radioModel" 
 						uib-btn-radio="'provid'">
 								Trainings provided
 						</button>
 					</div>
-					<div ng-switch = "radioModel">
+					<div ng-switch = "train.radioModel">
 						<div ng-switch-when = "attend">
 							<div uib-collapse = "isCollapsed" >
 								<div class = "row">

@@ -1,7 +1,6 @@
-app2.factory('myRepository',function() {
-	var visible = false;
-	
-	var org_list = [
+app3.service('myRepService',function() {
+
+var org_list = [
 						'TCS',
 						'Citibank',
 						'IBM',
@@ -10,80 +9,98 @@ app2.factory('myRepository',function() {
 						'Wipro'
 					];
 
+this.orgList = function () {
+	return org_list;
+};
+	
+var bs_dt = [
+				{
+					shortName		:'TCS',
+				    name    		:'Tata Consultancy Services',
+				    baseLocation	:'Chennai',
+				    multiLocations 	: true,								           
+				    isRegular 		: true,
+				    jobType			: 'Regular',
+				    period			:'Feb 1997 to Dec 2005',
+				    designation		:'IT Analyst'
+				},
+				{
+					shortName		:'Citibank',
+					name        	:'Citibank NA',
+				    baseLocation	:'Singapore',
+				    multiLocations	: false,
+				    isRegular		: false,
+				    jobType			: 'Contract',
+				    period			:'Jan 2006 to Dec 2007',
+				    designation		:'Associate Manager Projects',
+				    parentCompany	:'Covansys Asia Pacific Pvt Ltd'
+				    
+				},
+				{
+
+					shortName  		:'IBM',
+					name     	    :'IBM Global Services India',  
+					baseLocation	:'Chennai',
+				    multiLocations  : false,
+					isRegular       : false, 
+					jobType			: 'Contract',
+					period			:'Mar 2008 to Oct 2009',
+				    designation		:'Project Manager',
+				    parentCompany	:'Synova Innovative Technologies Pvt Ltd'
+				    
+				},
+				{
+					shortName  		:'HCL',
+					name       		:'HCL Technologies Ltd',
+					baseLocation	:'Chennai',
+					multiLocations	: true,									
+					isRegular		: true,
+					jobType			: 'Regular',
+					period			:'Oct 2009 to Mar 2011',
+				    designation		:'Associate Project Manager'
 				   
-	var basic_details = 	[
-								{
-									shortName		:'TCS',
-								    name    		:'Tata Consultancy Services',
-								    baseLocation	:'Chennai',
-								    multiLocations 	: true,								           
-								    isRegular 		: true,
-								    jobType			: 'Regular',
-								    period			:'Feb 1997 to Dec 2005',
-								    designation		:'IT Analyst'
-								},
-								{
-									shortName		:'Citibank',
-									name        	:'Citibank NA',
-								    baseLocation	:'Singapore',
-								    multiLocations	: false,
-								    isRegular		: false,
-								    jobType			: 'Contract',
-								    period			:'Jan 2006 to Dec 2007',
-								    designation		:'Associate Manager Projects',
-								    parentCompany	:'Covansys Asia Pacific Pvt Ltd'
-								    
-								},
-								{
+				},
+				{
 
-									shortName  		:'IBM',
-									name     	    :'IBM Global Services India',  
-									baseLocation	:'Chennai',
-								    multiLocations  : false,
-									isRegular       : false, 
-									jobType			: 'Contract',
-									period			:'Mar 2008 to Oct 2009',
-								    designation		:'Project Manager',
-								    parentCompany	:'Synova Innovative Technologies Pvt Ltd'
-								    
-								},
-								{
-									shortName  		:'HCL',
-									name       		:'HCL Technologies Ltd',
-									baseLocation	:'Chennai',
-									multiLocations	: true,									
-									isRegular		: true,
-									jobType			: 'Regular',
-									period			:'Oct 2009 to Mar 2011',
-								    designation		:'Associate Project Manager'
-								   
-								},
-								{
+					shortName		:'Microsoft',
+					name    	    :'Microsoft Global services India',
+					baseLocation	:'Hyderabad',
+					multiLocations	: false,
+					isRegular		: false,
+					jobType			: 'Contract',
+					period			:'Nov 2013 to Jan 2014',
+				    designation		:'Senior Project Manager',
+				    parentCompany	:'Asterminds Enterprise Solutions Pvt Ltd'
+				    
+				},
+				{
+					shortName		:'Wipro',
+					name    		:'Wipro Technologies',
+					baseLocation	:'Chennai',
+					multiLocations	: false,
+					isRegular   	: false,
+					jobType			: 'Contract',
+					period			:'Feb 2014 to Mar 2015',
+				    designation		:'Delivery manager',
+				    parentCompany	:'Railsdata Software Pvt Ltd'
+				    
+				}
+		    ];
 
-									shortName		:'Microsoft',
-									name    	    :'Microsoft Global services India',
-									baseLocation	:'Hyderabad',
-									multiLocations	: false,
-									isRegular		: false,
-									jobType			: 'Contract',
-									period			:'Nov 2013 to Jan 2014',
-								    designation		:'Senior Project Manager',
-								    parentCompany	:'Asterminds Enterprise Solutions Pvt Ltd'
-								    
-								},
-								{
-									shortName		:'Wipro',
-									name    		:'Wipro Technologies',
-									baseLocation	:'Chennai',
-									multiLocations	: false,
-									isRegular   	: false,
-									jobType			: 'Contract',
-									period			:'Feb 2014 to Mar 2015',
-								    designation		:'Delivery manager',
-								    parentCompany	:'Railsdata Software Pvt Ltd'
-								    
-								}
-						    ];
+this.basicDetails = function () {
+	return bs_dt;
+};
+
+
+/*this.visibility = function () {
+	return false;
+};
+*/
+});
+
+app2.factory('myRepository',function() {
+	var visible = false;	   
+
 
 var org_otherLocations =	[
 								{
@@ -254,14 +271,29 @@ var roles_rspns = 		[
 						];
 
 
+var selDtls = function (sd) {
+
+	switch (sd) {
+		case "rolresp" :
+		   return roles_rspns;
+		   break;
+		case "busdom" :
+		   return bus_domains;
+		   break;
+		case "othrloc" :
+		   return org_otherLocations ;  
+		   break;
+	};
+};
+
 
 return {
-	visibility : visible,
-	org_list   : org_list,
-	basic_details : basic_details,
+	
+	
 	org_otherLocations :  org_otherLocations,
 	bus_domains : bus_domains,
-	roles_rspns : roles_rspns
+	roles_rspns : roles_rspns,
+	select_dtls : selDtls
 };
 
 });

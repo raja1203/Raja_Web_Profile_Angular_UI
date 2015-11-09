@@ -1,16 +1,17 @@
 
-app.controller('ExperienceController',['myRepository',function(myRepository){
+app.controller('ExperienceController',['myRepService',function(myRepService){
 
 	this.selectOrg = '';
-	this.org_list = myRepository.org_list;
-    this.selectCmpny={};
-    this.visible = myRepository.visibility;    
-    this.basic_details = myRepository.basic_details;
+	this.org_list = [];
+	this.org_list = myRepService.orgList();
+    this.visible = false;
+    this.basicDetails= []; 
+    this.basicDetails = myRepService.basicDetails();
 }]);
 
 
 app.controller("DetailsController",['myRepository', function(myRepository) {
-	this.visible = myRepository.visibility;
+	this.dvisible = false;
 	
 	this.setTab = function(currentTab) {
 		this.tab = currentTab ;
@@ -19,10 +20,14 @@ app.controller("DetailsController",['myRepository', function(myRepository) {
 		return this.tab === checkTab || 0;
 	}
 	
-    this.radioModel = '';    
-    this.roles_respns = myRepository.roles_rspns;
-    this.bus_doms = myRepository.bus_domains;
-    this.locations = myRepository.org_otherLocations;
+  
+    this.bdstyle = {'width': '40%'};
+    this.locstyle = {'width': '25%'};
+
+    this.selDtls = function () { 
+    return myRepository.select_dtls(this.radioModel);
+    };
+    
 }]);
 
 app.controller('trainController',['myRepository',function(myRepository){
