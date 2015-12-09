@@ -1,6 +1,5 @@
-	<div ng-repeat = "sloc in dtlsCtrl.selDtls() | filter : sorg.shortName " >
-	
-
+	<div ng-repeat = "sloc in dtlsCtrl.selDtls() | filter : sorg.shortName : true " >
+		
 		<div>
 			<table class = "table table-striped table-bordered table-responsive" ng-style = "dtlsCtrl.locstyle">
 				<thead>
